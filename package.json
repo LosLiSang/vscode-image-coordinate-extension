@@ -2,7 +2,7 @@
   "name": "image-coordinate-viewer",
   "displayName": "Image Coordinate Viewer",
   "description": "Open images with crosshair overlay, live pixel coordinates, click-to-copy and color picker.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "lisangcode",
   "repository": {
     "type": "git",
