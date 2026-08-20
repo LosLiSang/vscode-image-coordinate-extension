@@ -48,7 +48,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 }
 
-class CoordinateEditorProvider implements vscode.CustomTextEditorProvider {
+class CoordinateEditorProvider implements vscode.CustomReadonlyEditorProvider {
   lastCoords: { x: number; y: number } | null = null;
   lastColor: string | null = null;
 
@@ -57,8 +57,12 @@ class CoordinateEditorProvider implements vscode.CustomTextEditorProvider {
     private readonly statusItem: vscode.StatusBarItem
   ) {}
 
-  resolveCustomTextEditor(
-    document: vscode.TextDocument,
+  openCustomDocument(uri: vscode.Uri): vscode.CustomDocument {
+    return { uri, dispose: () => undefined };
+  }
+
+  resolveCustomEditor(
+    document: vscode.CustomDocument,
     webviewPanel: vscode.WebviewPanel
   ): void {
     webviewPanel.webview.options = { enableScripts: true };
