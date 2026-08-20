@@ -107,14 +107,6 @@ class CoordinateEditorProvider implements vscode.CustomReadonlyEditorProvider {
   #crossV, #crossH { position: absolute; background: rgba(255,255,255,.55); box-shadow: 0 0 1px rgba(0,0,0,.8); pointer-events: none; display: none; }
   #crossV { width: 1px; top: 0; bottom: 0; }
   #crossH { height: 1px; left: 0; right: 0; }
-  #tooltip {
-    position: absolute; pointer-events: none; display: none;
-    background: var(--vscode-editorWidget-background); color: var(--vscode-editorWidget-foreground);
-    border: 1px solid var(--vscode-widget-border); border-radius: 3px;
-    font-family: var(--vscode-editor-font-family); font-size: 12px;
-    padding: 3px 7px; white-space: nowrap; z-index: 10; line-height: 1.5;
-  }
-  #tooltip .swatch { display: inline-block; width: 10px; height: 10px; border: 1px solid var(--vscode-widget-border); vertical-align: -1px; margin-right: 5px; }
   #info {
     position: fixed; top: 6px; left: 8px; z-index: 20;
     font-family: var(--vscode-editor-font-family); font-size: 12px;
@@ -128,7 +120,6 @@ class CoordinateEditorProvider implements vscode.CustomReadonlyEditorProvider {
   <div id="viewport"><div id="imgWrap">
     <img id="img" src="${imgSrc}">
     <div id="crossV"></div><div id="crossH"></div>
-    <div id="tooltip"></div>
   </div></div>
 <script src="${scriptUri}"></script>
 </body>

@@ -5,7 +5,6 @@
   const wrap = document.getElementById('imgWrap');
   const crossV = document.getElementById('crossV');
   const crossH = document.getElementById('crossH');
-  const tooltip = document.getElementById('tooltip');
   const info = document.getElementById('info');
 
   const cfg = {
@@ -83,22 +82,11 @@
       crossH.style.top = (e.clientY - rect.top) + 'px';
     }
 
-    tooltip.style.display = 'block';
-    tooltip.innerHTML =
-      `<span class="swatch" style="background:${color || 'transparent'}"></span>` +
-      `(${p.x}, ${p.y})` + (color ? `<br>${color}` : '');
-    const tr = tooltip.getBoundingClientRect();
-    let tx = e.clientX + 14, ty = e.clientY + 14;
-    if (tx + tr.width > window.innerWidth - 4) tx = e.clientX - tr.width - 10;
-    if (ty + tr.height > window.innerHeight - 4) ty = e.clientY - tr.height - 10;
-    tooltip.style.left = tx + 'px';
-    tooltip.style.top = ty + 'px';
   });
 
   function hideOverlay() {
     crossV.style.display = 'none';
     crossH.style.display = 'none';
-    tooltip.style.display = 'none';
     vscode.postMessage({ type: 'leave' });
   }
 
