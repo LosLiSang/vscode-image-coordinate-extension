@@ -1,0 +1,85 @@
+{
+  "name": "image-coordinate-viewer",
+  "displayName": "Image Coordinate Viewer",
+  "description": "Open images with crosshair overlay, live pixel coordinates, click-to-copy and color picker.",
+  "version": "0.1.0",
+  "publisher": "lisang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LosLiSang/vscode-image-coordinate-extension"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "imageCoordinateViewer.editor",
+        "displayName": "Image Coordinate Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.{png,jpg,jpeg,bmp,gif,webp}"
+          }
+        ],
+        "priority": "option"
+      }
+    ],
+    "commands": [
+      {
+        "command": "imageCoordinateViewer.copyCoords",
+        "title": "Image Viewer: Copy Coordinates"
+      },
+      {
+        "command": "imageCoordinateViewer.copyColor",
+        "title": "Image Viewer: Copy Pixel Color"
+      }
+    ],
+    "configuration": {
+      "title": "Image Coordinate Viewer",
+      "properties": {
+        "imageCoordinateViewer.crosshair": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show crosshair lines following the mouse"
+        },
+        "imageCoordinateViewer.clickToCopy": {
+          "type": "string",
+          "enum": [
+            "off",
+            "coords",
+            "color",
+            "both"
+          ],
+          "default": "coords",
+          "description": "What to copy to clipboard on image click"
+        },
+        "imageCoordinateViewer.zoomMode": {
+          "type": "string",
+          "enum": [
+            "fit",
+            "actual"
+          ],
+          "default": "fit",
+          "description": "Initial zoom: fit to window or 100% actual size"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "typescript": "5.4.x"
+  }
+}
