@@ -13,19 +13,9 @@
     clickToCopy: 'coords',
     zoomMode: 'fit',
   };
-  function readConfig() {
-    const c = vscode.workspace.getConfiguration('imageCoordinateViewer');
-    cfg.crosshair = c.get('crosshair');
-    cfg.clickToCopy = c.get('clickToCopy');
-    const zm = c.get('zoomMode');
-    if (zm !== cfg.zoomMode) {
-      cfg.zoomMode = zm;
-      img.classList.toggle('actual', zm === 'actual');
-    }
-  }
-  readConfig();
-  let cfgTimer = null;
-  window.addEventListener('focus', () => { readConfig(); });
+  // Webviews do not expose vscode.workspace; settings are currently the defaults
+  // declared in package.json. Host-side settings can be injected here later.
+  img.classList.toggle('actual', cfg.zoomMode === 'actual');
 
   // Off-screen canvas for pixel color sampling (avoids CORS/tainted issues with webview resource URIs)
   const sampleCanvas = document.createElement('canvas');
